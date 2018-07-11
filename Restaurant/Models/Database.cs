@@ -1,4 +1,6 @@
 ﻿using System;
+using MySql.Data.MySqlClient;
+
 namespace DiningTracker.Models
 {
     public class DB

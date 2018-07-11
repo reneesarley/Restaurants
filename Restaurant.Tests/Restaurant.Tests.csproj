@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cuisine.Tests\" />
+    <Folder Include="Models.Tests\" />
+    <Folder Include="Controllers.Tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Restaurant\Restaurant.csproj" />
   </ItemGroup>
 </Project>
