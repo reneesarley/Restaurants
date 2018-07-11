@@ -68,7 +68,7 @@
        <ul class="cuisineList" >
             @foreach(var cuisine in Model[0])
             {
-            <li value="@cuisine.GetId()">@cuisine.GetName()</li>
+            <li value="@cuisine.GetId()"><a href="/restaurants/@cuisine.GetName()/@cuisine.GetId()/sortedByCuisine">@cuisine.GetName()</a></li>
             }
             <li> <a href="cuisines/addNew">ADD NEW CUISINE</a></li>
         </ul>
@@ -76,8 +76,12 @@
 
     <div class="col-md-6">
         <h2>Restaurants</h2>
-               <ul>
-            <li> <a href="restaurants/addNew">Add New Restuarant</a></li>
+        <ul class="restaurantList">
+         @foreach(var restaurant in Model[1])
+            {
+            <li value="@restaurant.GetId()">@restaurant.GetName()</li>
+            }
+            <li> <a href="restaurants/addNew">ADD NEW RESTAURANT</a></li>
         </ul>
     </div>
 </div>

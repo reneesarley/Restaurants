@@ -87,6 +87,45 @@ namespace DiningTracker.Models
         }
 
 
+        public static List<Restaurant> GetOneCuisine(int selectedId)
+        {
+            List<Restaurant> allOfOneCuisine = new List<Restaurant> { };
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM restuarants WHERE cuisine_id = @SelectedID;";
+
+
+            MySqlParameter id = new MySqlParameter();
+            id.ParameterName = "@SelectedID";
+            id.Value = selectedId;
+            cmd.Parameters.Add(id);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            //MySqlParameter name = new MySqlParameter();
+            //name.ParameterName = "@RestuarantName";
+            //name.Value = _name;
+            //cmd.Parameters.Add(name);
+
+            while (rdr.Read())
+            {
+                int restId = rdr.GetInt32(0);
+                string name = rdr.GetString(1);
+                int cuisineId = rdr.GetInt32(2);
+                Restaurant newRestaurant = new Restaurant(name, cuisineId, restId);
+                allOfOneCuisine.Add(newRestaurant);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return allOfOneCuisine;
+
+        }
+
+
         public static void DeleteAll()
         {
             MySqlConnection conn = DB.Connection();

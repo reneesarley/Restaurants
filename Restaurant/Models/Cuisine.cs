@@ -72,6 +72,7 @@ namespace DiningTracker.Models
             return allCuisines;
         }
 
+
         public static void DeleteAll()
         {
             MySqlConnection conn = DB.Connection();

@@ -11,7 +11,7 @@
     <label for="cuisineNameDropDown">Cuisine</label>
     <select name="cuisineId" >
 
-        @foreach(var cuisine in Model[])
+        @foreach(var cuisine in Model)
     {
     <option value="@cuisine.GetId()">@cuisine.GetName()</option>
     }

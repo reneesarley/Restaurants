@@ -24,5 +24,15 @@ namespace DiningTracker.Controllers
             newRestaurant.Save();          
             return View(Restaurant.GetAll());
         }
+
+        [HttpGet("restaurants/{cuisineName}/{id}/sortedByCuisine")]
+        public ActionResult JustOneCuisine(string cuisineName, int cuisineId)
+        {
+            List<Object> model = new List<object>() {Restaurant.GetOneCuisine(cuisineId), cuisineName}
+            ;
+
+               
+            return View("JustOneCuisine", model);
+        }
     }
 }
