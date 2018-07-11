@@ -26,9 +26,9 @@ namespace DiningTracker.Controllers
         }
 
         [HttpGet("restaurants/{cuisineName}/{id}/sortedByCuisine")]
-        public ActionResult JustOneCuisine(string cuisineName, int cuisineId)
+        public ActionResult JustOneCuisine(string cuisineName, int id)
         {
-            List<Object> model = new List<object>() {Restaurant.GetOneCuisine(cuisineId), cuisineName}
+            List<Object> model = new List<object>() {Restaurant.GetOneCuisine(id), cuisineName}
             ;
 
                
