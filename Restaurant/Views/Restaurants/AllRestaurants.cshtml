@@ -4,3 +4,11 @@
 @{
 }
 <h2>Your Restaurant has been added!</h2>
+
+<ul>
+@foreach(var restaurant in Model)
+{
+    <li class="listRestName" > @restaurant.GetName()</li>
+
+}
+</ul>

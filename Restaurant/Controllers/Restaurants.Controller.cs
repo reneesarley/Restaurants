@@ -14,16 +14,15 @@ namespace DiningTracker.Controllers
     public ActionResult AddNew()
     {
 
-        return View();
+            return View(Cuisine.GetAll());
     }
 
         [HttpPost("/saveRestaurant")]
         public ActionResult AllRestaurants(string restaurantName, int cuisineId)
         {
-            //Restaurant newRestaurant = new Restaurant(restaurantName, cuisineId);
-            //newRestaurant.Save();
-            //Restaurant.GetAll()
-            return View();
+            Restaurant newRestaurant = new Restaurant(restaurantName, cuisineId);
+            newRestaurant.Save();          
+            return View(Restaurant.GetAll());
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DiningTracker.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiningTracker.Controllers
@@ -10,7 +11,9 @@ namespace DiningTracker.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+
+            List<object> models = new List<object>() {Cuisine.GetAll(), Restaurant.GetAll() };
+            return View(models);
         }
 
         public IActionResult About()
