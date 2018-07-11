@@ -19,30 +19,31 @@ namespace DiningTracker.Tests
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=diningTracker_test;";
         }
 
-        //[TestMethod]
-        //public void GetAll_DbStartsEmpty_0()
-        //{
-        //    //Arrange
-        //    //Act
-        //    int result = Cuisine.GetAll().Count;
+        [TestMethod]
+        public void GetAll_DbStartsEmpty_0()
+        {
+            //Arrange
+            //Act
+            int result = Restaurant.GetAll().Count;
 
-        //    //Assert
-        //    Assert.AreEqual(0, result);
-        //}
+            //Assert
+            Assert.AreEqual(0, result);
+        }
 
-        //[TestMethod]
-        //public void Save_SavesToDatabase_ItemList()
-        //{
-        //    //Arrange
-        //    Cuisine newCuisine = new Cuisine("testCusine");
+        [TestMethod]
+        public void Save_SavesToDatabase_ItemList()
+        {
+            //Arrange
+            Restaurant newRestuarant = new Restaurant("testRestuarant", 0);
 
-        //    //Act
-        //    newCuisine.Save();
-        //    List<Cuisine> result = Cuisine.GetAll();
-        //    List<Cuisine> testList = new List<Cuisine> { newCuisine };
 
-        //    //Assert
-        //    CollectionAssert.AreEqual(result, testList);
-        //}
+            //Act
+            newRestuarant.Save();
+            List<Restaurant> result = Restaurant.GetAll();
+            List<Restaurant> testList = new List<Restaurant> { newRestuarant };
+
+            //Assert
+            CollectionAssert.AreEqual(result, testList);
+        }
     }
 }
