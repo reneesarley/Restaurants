@@ -1,0 +1,17 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>Add New Restaurant</h2>
+<form action="/saveRestaurant" method="post" >
+    <label for="NewRestaurant">New Restaurant</label>
+    <input type="text" class="form-control" name="restaurantName" id="newRestaurant">
+
+    <label for="NewRestaurantCuisine">Cuisine Type</label>
+    <input type="number" class="form-control" name="cuisineId" id="cuisineId">
+    
+    <button type="submit">Add Restaurant</button>
+
+</form>
