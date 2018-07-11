@@ -1,0 +1,10 @@
+﻿
+@{
+}
+<h4>Your new cuisine has been saved to the Cuisine List!</h4>
+<ul>
+    @foreach (var cuisine in Model)
+    {
+    <li>@cuisine.GetName()</li>
+    }
+</ul>

@@ -22,5 +22,18 @@ namespace DiningTracker.Tests
             Assert.IsInstanceOfType(addNewView, typeof(ViewResult));
         }
 
+        [TestMethod]
+        public void SaveToDb_ReturnsCorrectView_True()
+        {
+            //Arrange
+            CuisinesController controller = new CuisinesController();
+
+            //Act
+            ActionResult SaveToDbView = controller.SaveToDb("testName");
+
+            //Assert
+            Assert.IsInstanceOfType(SaveToDbView, typeof(ViewResult));
+        }
+
     }
 }
