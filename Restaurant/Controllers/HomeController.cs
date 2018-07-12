@@ -9,6 +9,7 @@ namespace DiningTracker.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet("/")]
         public IActionResult Index()
         {
             List<object> models = new List<object>() { Cuisine.GetAll(), Restaurant.GetAll(), "All" };

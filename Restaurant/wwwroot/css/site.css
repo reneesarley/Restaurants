@@ -4,9 +4,12 @@
    
 }
 
+.resetIndex {
+    text-align: right;
+}
+
 .cuisineList, .restaurantList {
-    list-style: none;
-        
+    list-style: none
 }
 
 .cuisineCard {
@@ -16,7 +19,13 @@
     position: relative;
     text-align: center;
     height: 200px;
-    width:100px;       
+    width:100px;         
+}
+
+.featuresImage {
+    margin: 10px;
+    position: absolute;
+    bottom: 10px;
 }
 
 .restaurantCard {
@@ -27,14 +36,11 @@
     height: 100px;
     width: 100px;
     color: black;
-    backgound-color: lightgrey;
  }
 
 .restaurantCardText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+    text-align:center;
     text-transform: uppercase;
 }
 

@@ -65,7 +65,7 @@
 <div class="row">
     <div class="col-md-6">
         <h2>Filter By Cuisine</h2>
-         <p id="addNewCuisineLink"=><a href="cuisines/create">ADD NEW CUISINE</a></p>
+         <p id="addNewCuisineLink"=><a href="cuisines/create">ADD NEW CUISINE</a></p> 
 @foreach (var cuisine in Model[0])
     {
     <div class="container cuisineCard" style="width:48%">
@@ -76,16 +76,27 @@
  </div>
 
  <div class="col-md-6">
-        <h2>@Model[2] Restaurants</h2>
-        <ul class="restaurantList">
-        <p> <a href="restaurants/addNew">ADD NEW RESTAURANT</a></p>
+       <h2>@Model[2] Restaurants</h2> 
+        <div class="row" >
+           <p class="col-sm-6"> <a href="restaurants/addNew">ADD NEW RESTAURANT</a></p>
+            <p class="col-sm-6 resetIndex"> <a href="/">SHOW ALL RESTAURANTS</a></p>
+        </div>
          @foreach(var restaurant in Model[1])
             {
             <div class="container restaurantCard" style="width:48%">
             <h4 class="restaurantCardText " value="@restaurant.GetId()">@restaurant.GetName()</h4>
+            <p class="restaurantCardText " value="@restaurant.GetId()">@restaurant.GetStreetAddress()</p>
+             <p class="restaurantCardText " value="@restaurant.GetId()">@restaurant.GetCity(), @restaurant.GetState() @restaurant.GetZip()</p>
+            @if (@restaurant.GetAllowsDogs())
+                {
+                <img id="featuresImage" src="~/images/dogOkay.jpg" style="width:15px; height:15px;">
+                }
+             @if (@restaurant.GetServesAlcohol())
+                {
+                <img class="featuresImage" src="~/images/alcoholServed.jpg" style="width:20px; height:20px;">
+                }
              </div>
             }
 
-        </ul>
     </div>
 </div>

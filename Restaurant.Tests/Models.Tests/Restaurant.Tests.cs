@@ -31,10 +31,10 @@ namespace DiningTracker.Tests
         }
 
         [TestMethod]
-        public void Save_SavesToDatabase_ItemList()
+        public void Save_SavesToDatabase_RestaurantList()
         {
             //Arrange
-            Restaurant newRestuarant = new Restaurant("testRestuarant", 0, false, false);
+            Restaurant newRestuarant = new Restaurant("testRestuarant", 0, false, false, "12354 street", "portland", "OR", 12345);
 
 
             //Act

@@ -11,15 +11,22 @@ namespace DiningTracker.Models
         private int _cuisineId;
         private bool _allowsDogs;
         private bool _servesAlcohol;
+        private string _streetAddress;
+        private string _city;
+        private string _state;
+        private int _zip;
 
-        public Restaurant(string name, int cuisineId, bool allowsDogs, bool servesAlcohol, int id = 0)
+        public Restaurant(string name, int cuisineId, bool allowsDogs, bool servesAlcohol, string streetAddres, string city, string state, int zip, int id = 0)
         {
             _id = id;
             _name = name;
             _cuisineId = cuisineId;
             _allowsDogs = allowsDogs;
             _servesAlcohol = servesAlcohol;
-            
+            _streetAddress = streetAddres;
+            _city = city;
+            _state = state;
+            _zip = zip;
         }
 
         public int GetId()
@@ -47,13 +54,32 @@ namespace DiningTracker.Models
             return _servesAlcohol;
         }
 
+        public string GetStreetAddress()
+        {
+            return _streetAddress;
+        }
+
+        public string GetCity()
+        {
+            return _city;
+        }
+
+        public string GetState()
+        {
+            return _state;
+        }
+        public int GetZip()
+        {
+            return _zip;
+        }
+
         public void Save()
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO restuarants (name, cuisine_id, allows_dogs, serves_alcohol) VALUES (@RestuarantName, @cuisineId, @AllowsDogs, @ServesAlcohol);";
+            cmd.CommandText = @"INSERT INTO restuarants (name, cuisine_id, allows_dogs, serves_alcohol, streetAddress, city, state, zip) VALUES (@RestuarantName, @cuisineId, @AllowsDogs, @ServesAlcohol, @Street, @City, @State, @Zip);";
 
             MySqlParameter name = new MySqlParameter();
             name.ParameterName = "@RestuarantName";
@@ -74,6 +100,26 @@ namespace DiningTracker.Models
             servesAlcohol.ParameterName = "@ServesAlcohol";
             servesAlcohol.Value = _servesAlcohol;
             cmd.Parameters.Add(servesAlcohol);
+
+            MySqlParameter streetAddress = new MySqlParameter();
+            streetAddress.ParameterName = "@Street";
+            streetAddress.Value = _streetAddress;
+            cmd.Parameters.Add(streetAddress);
+
+            MySqlParameter city = new MySqlParameter();
+            city.ParameterName = "@City";
+            city.Value = _city;
+            cmd.Parameters.Add(city);
+
+            MySqlParameter state = new MySqlParameter();
+            state.ParameterName = "@State";
+            state.Value = _state;
+            cmd.Parameters.Add(state);
+
+            MySqlParameter zip = new MySqlParameter();
+            zip.ParameterName = "@Zip";
+            zip.Value = _zip;
+            cmd.Parameters.Add(zip);
 
             cmd.ExecuteNonQuery();
             _id = (int)cmd.LastInsertedId;
@@ -100,9 +146,13 @@ namespace DiningTracker.Models
                 string name = rdr.GetString(1);
                 int cuisineId = rdr.GetInt32(2);
                 bool allowsDogs = rdr.GetBoolean(3);
-                bool servesAlcohol = rdr.GetBoolean(3);
+                bool servesAlcohol = rdr.GetBoolean(4);
+                string streetAddress = rdr.GetString(5);
+                string city = rdr.GetString(6);
+                string state = rdr.GetString(7);
+                int zip = rdr.GetInt32(8);
 
-                Restaurant newRestaurant = new Restaurant(name, cuisineId, allowsDogs, servesAlcohol, id);
+                Restaurant newRestaurant = new Restaurant(name, cuisineId, allowsDogs, servesAlcohol, streetAddress, city, state, zip, id);
                 allRestaurants.Add(newRestaurant);
             }
             conn.Close();
@@ -143,8 +193,13 @@ namespace DiningTracker.Models
                 int cuisineId = rdr.GetInt32(2);
                 bool allowsDogs = rdr.GetBoolean(3);
                 bool servesAlcohol = rdr.GetBoolean(3);
+                string streetAddress = rdr.GetString(4);
+                string city = rdr.GetString(5);
+                string state = rdr.GetString(6);
+                int zip = rdr.GetInt32(7);
 
-                Restaurant newRestaurant = new Restaurant(name, cuisineId, allowsDogs, servesAlcohol, restId);
+
+                Restaurant newRestaurant = new Restaurant(name, cuisineId, allowsDogs, servesAlcohol, streetAddress, city, state, zip,  restId);
                 allOfOneCuisine.Add(newRestaurant);
             }
             conn.Close();

@@ -20,7 +20,7 @@ namespace DiningTracker.Controllers
         [HttpPost("/saveRestaurant")]
         public ActionResult AllRestaurants(string restaurantName, int cuisineId, bool allowsDogs, bool servesAlcohol)
         {
-            Restaurant newRestaurant = new Restaurant(restaurantName, cuisineId, allowsDogs, servesAlcohol);
+            Restaurant newRestaurant = new Restaurant(restaurantName, cuisineId, allowsDogs, servesAlcohol, "1234 street", "Portland", "OR", 12345);
             newRestaurant.Save();          
             return View(Restaurant.GetAll());
         }
