@@ -21,7 +21,7 @@ namespace DiningTracker.Controllers
         {
             Cuisine newCuisine = new Cuisine(cuisineName);
             newCuisine.Save();
-            return View(Cuisine.GetAll());
+            return RedirectToAction("Index", "Home");
         }
 
     }

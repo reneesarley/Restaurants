@@ -192,11 +192,11 @@ namespace DiningTracker.Models
                 string name = rdr.GetString(1);
                 int cuisineId = rdr.GetInt32(2);
                 bool allowsDogs = rdr.GetBoolean(3);
-                bool servesAlcohol = rdr.GetBoolean(3);
-                string streetAddress = rdr.GetString(4);
-                string city = rdr.GetString(5);
-                string state = rdr.GetString(6);
-                int zip = rdr.GetInt32(7);
+                bool servesAlcohol = rdr.GetBoolean(4);
+                string streetAddress = rdr.GetString(5);
+                string city = rdr.GetString(6);
+                string state = rdr.GetString(7);
+                int zip = rdr.GetInt32(8);
 
 
                 Restaurant newRestaurant = new Restaurant(name, cuisineId, allowsDogs, servesAlcohol, streetAddress, city, state, zip,  restId);

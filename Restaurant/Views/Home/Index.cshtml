@@ -85,9 +85,7 @@
             {
             <div class="container restaurantCard" style="width:48%">
             <h4 class="restaurantCardText " value="@restaurant.GetId()">@restaurant.GetName()</h4>
-            <p class="restaurantCardText " value="@restaurant.GetId()">@restaurant.GetStreetAddress()</p>
-             <p class="restaurantCardText " value="@restaurant.GetId()">@restaurant.GetCity(), @restaurant.GetState() @restaurant.GetZip()</p>
-            @if (@restaurant.GetAllowsDogs())
+             @if (@restaurant.GetAllowsDogs())
                 {
                 <img id="featuresImage" src="~/images/dogOkay.jpg" style="width:15px; height:15px;">
                 }
@@ -95,6 +93,8 @@
                 {
                 <img class="featuresImage" src="~/images/alcoholServed.jpg" style="width:20px; height:20px;">
                 }
+            <p class="restaurantCardText " value="@restaurant.GetId()">@restaurant.GetStreetAddress() <br> @restaurant.GetCity(), @restaurant.GetState() @restaurant.GetZip()</p>
+
              </div>
             }
 

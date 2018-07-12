@@ -18,11 +18,11 @@ namespace DiningTracker.Controllers
     }
 
         [HttpPost("/saveRestaurant")]
-        public ActionResult AllRestaurants(string restaurantName, int cuisineId, bool allowsDogs, bool servesAlcohol)
+        public ActionResult AllRestaurants(string restaurantName, int cuisineId, bool allowsDogs, bool servesAlcohol, string streetAddress, string city, string state, int zip)
         {
-            Restaurant newRestaurant = new Restaurant(restaurantName, cuisineId, allowsDogs, servesAlcohol, "1234 street", "Portland", "OR", 12345);
+            Restaurant newRestaurant = new Restaurant(restaurantName, cuisineId, allowsDogs, servesAlcohol, streetAddress, city, state, zip );
             newRestaurant.Save();          
-            return View(Restaurant.GetAll());
+            return RedirectToAction ("Index", "Home");
         }
 
         [HttpGet("restaurants/{cuisineName}/{id}/sortedByCuisine")]

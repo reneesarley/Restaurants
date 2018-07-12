@@ -4,6 +4,10 @@
    
 }
 
+select {
+margin: 10px;
+}
+
 .resetIndex {
     text-align: right;
 }
