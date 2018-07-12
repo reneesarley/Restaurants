@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{9A7A5AAE-677B-49DB-8A5A-270E66ADAAB2}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Restaurant/Views/Restaurants/AddNew.cshtml">
+    <Files>
+      <File FileName="Restaurant/Startup.cs" Line="62" Column="113" />
+      <File FileName="Restaurant/sqlBuild.sql" Line="51" Column="3" />
+      <File FileName="Restaurant/Views/Restaurants/AddNew.cshtml" Line="19" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Restaurant PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

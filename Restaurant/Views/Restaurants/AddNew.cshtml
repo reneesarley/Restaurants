@@ -5,18 +5,33 @@
 }
 
 <h2>Add New Restaurant</h2>
-<form action="/saveRestaurant" method="post" >
+<form action="/saveRestaurant" method="post">
     <label for="NewRestaurant">Restaurant Name</label>
     <input type="text" class="form-control" name="restaurantName" id="newRestaurant">
     <label for="cuisineNameDropDown">Cuisine</label>
-    <select name="cuisineId" >
-
-        @foreach(var cuisine in Model)
-    {
-    <option value="@cuisine.GetId()">@cuisine.GetName()</option>
-    }
+    <select name="cuisineId">
+        @foreach (var cuisine in Model)
+        {
+            <option value="@cuisine.GetId()">@cuisine.GetName()</option>
+        }
     </select>
-       
-    <button class="btn btn-primary" type="submit">Add Restaurant</button>
+    <div class="row">
+        <div calss id="dogsSection">
+            <label>Allows Dogs?</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="allowsDogs" id="inlineRadio1" value="1">
+                <label class="form-check-label" for="allowsDogs1">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="allowsDogs" id="inlineRadio2" value="0">
+                <label class="form-check-label" for="allowsDogs2">No</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="allowsDogs" id="inlineRadio3" value="">
+                <label class="form-check-label" for="allowsDogs3">I don't know</label>
+            </div>
+         </div>
+     </div>
 
+    <button class="btn btn-primary" type="submit">Add Restaurant</button>
 </form>
