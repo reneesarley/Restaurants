@@ -9,6 +9,26 @@
         
 }
 
+.cuisineCard {
+    float: left;
+    border: solid 1px black;
+    margin: 2px;
+    position: relative;
+    text-align: center
+}
+
+.card-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-shadow: 2px 2px black;
+}
+
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */

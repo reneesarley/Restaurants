@@ -8,18 +8,18 @@ using DiningTracker.Models;
 namespace DiningTracker.Tests
 {
     [TestClass]
-    public class CuisinesControllerTests //: IDisposable
+    public class CuisinesControllerTests : IDisposable
     {
 
-        //public void Dispose()
-        //{
-        //    Cuisine.DeleteAll();
-        //}
+        public void Dispose()
+        {
+            Cuisine.DeleteAll();
+        }
 
-        //public CuisinesControllerTest()
-        //{
-        //    DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=diningTracker_test;";
-        //}
+        public CuisinesControllerTests()
+        {
+            DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=diningTracker_test;";
+        }
 
         [TestMethod]
         public void AddNew_ReturnsCorrectView_True()
