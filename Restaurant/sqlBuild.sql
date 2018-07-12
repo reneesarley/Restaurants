@@ -1,6 +1,6 @@
-﻿CREATE DATABASE test_database;
+﻿CREATE DATABASE diningTracker;
 
-USE test_database;
+USE diningTracker;
 
 CREATE TABLE `cuisines` (
   `id` int(11) NOT NULL,
@@ -67,4 +67,8 @@ INSERT INTO `restuarants` (`id`, `name`, `cuisine_id`, `allows_dogs`, `serves_al
 --
 ALTER TABLE `restuarants`
   ADD PRIMARY KEY (`id`);
+
+
+INSERT INTO `restuarants` ( `name`, `cuisine_id`, `allows_dogs`, `serves_alcohol`) VALUES
+( 'White Owl', 2, 1, 1);
 

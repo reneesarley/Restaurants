@@ -19,17 +19,17 @@
             </div>
         </div>
         <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
+            <img src="~/images/default_card.jpg" alt="Visual Studio" class="img-responsive" />
             <div class="carousel-caption" role="option">
-                <p>
+ <!--               <p>
                     There are powerful new features in Visual Studio for building modern web apps.
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
                         Learn More
                     </a>
-                </p>
+                </p>-->
             </div>
         </div>
-        <div class="item">
+<!--        <div class="item">
             <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
@@ -50,7 +50,7 @@
                     </a>
                 </p>
             </div>
-        </div>
+        </div>-->
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -69,8 +69,8 @@
 @foreach (var cuisine in Model[0])
     {
     <div class="container cuisineCard" style="width:48%">
-          <img style="width:100%; height:100%;" class="img-responsive" src="~/images/@cuisine.GetName()_card.jpg" alt="@cuisine.GetName() food">
-          <div class="card-text"><a class="card-text" href="/restaurants/@cuisine.GetName()/@cuisine.GetId()/sortedByCuisine">@cuisine.GetName()</a> </div>
+          <img style="width:100%; height:100%;" class="img-responsive" src="~/images/@cuisine.GetName()_card.jpg"  alt="@cuisine.GetName() food">
+          <div class="card-text"><a class="card-text" href="/@cuisine.GetId()/sortedByCuisine">@cuisine.GetName()</a> </div>
     </div>
     }
  </div>
@@ -78,11 +78,14 @@
  <div class="col-md-6">
         <h2>Restaurants</h2>
         <ul class="restaurantList">
+        <p> <a href="restaurants/addNew">ADD NEW RESTAURANT</a></p>
          @foreach(var restaurant in Model[1])
             {
-            <li value="@restaurant.GetId()">@restaurant.GetName()</li>
+            <div class="container restaurantCard" style="width:48%">
+            <h4 class="restaurantCardText " value="@restaurant.GetId()">@restaurant.GetName()</h4>
+             </div>
             }
-            <li> <a href="restaurants/addNew">ADD NEW RESTAURANT</a></li>
+
         </ul>
     </div>
 </div>

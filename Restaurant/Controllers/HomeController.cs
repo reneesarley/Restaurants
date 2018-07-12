@@ -11,9 +11,15 @@ namespace DiningTracker.Controllers
     {
         public IActionResult Index()
         {
-
-            List<object> models = new List<object>() {Cuisine.GetAll(), Restaurant.GetAll() };
+            List<object> models = new List<object>() { Cuisine.GetAll(), Restaurant.GetAll() };
             return View(models);
+        }
+
+        [HttpGet("{id}/sortedByCuisine")]
+        public IActionResult IndexRestaurantSorted(int id)
+        {
+            List<object> models = new List<object>() {Cuisine.GetAll(), Restaurant.GetOneCuisine(id) };
+            return RedirectToAction("Index", models);
         }
 
         public IActionResult About()
