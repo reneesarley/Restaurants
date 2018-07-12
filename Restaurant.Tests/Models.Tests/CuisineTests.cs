@@ -44,5 +44,19 @@ namespace DiningTracker.Tests
             //Assert
             CollectionAssert.AreEqual(result, testList);
         }
+
+        [TestMethod]
+        public void Find_FindsCuisineInDatabase_Item()
+        {
+            //Arrange
+            Cuisine testCuisine = new Cuisine("new Cusine Test");
+            testCuisine.Save();
+
+            //Act
+            Cuisine foundCuisine = Cuisine.Find(testCuisine.GetId());
+
+            //Assert
+            Assert.AreEqual(testCuisine, foundCuisine);
+        }
     }
 }

@@ -64,7 +64,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h2>Cuisines</h2>
+        <h2>Filter By Cuisine</h2>
          <p id="addNewCuisineLink"=><a href="cuisines/create">ADD NEW CUISINE</a></p>
 @foreach (var cuisine in Model[0])
     {
@@ -76,7 +76,7 @@
  </div>
 
  <div class="col-md-6">
-        <h2>Restaurants</h2>
+        <h2>@Model[2] Restaurants</h2>
         <ul class="restaurantList">
         <p> <a href="restaurants/addNew">ADD NEW RESTAURANT</a></p>
          @foreach(var restaurant in Model[1])
