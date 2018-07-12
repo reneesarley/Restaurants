@@ -9,14 +9,14 @@ namespace DiningTracker.Controllers
 {
     public class CuisinesController : Controller
     {
-        [HttpGet("cuisines/addNew")]
+        [HttpGet("cuisines/create")]
         public ActionResult AddNew()
         {
  
             return View();
         }
 
-        [HttpPost("saveToDb")]
+        [HttpPost("/create")]
         public ActionResult SaveToDb(string cuisineName)
         {
             Cuisine newCuisine = new Cuisine(cuisineName);

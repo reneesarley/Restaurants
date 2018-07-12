@@ -9,12 +9,16 @@ namespace DiningTracker.Models
         private int _id;
         private string _name;
         private int _cuisineId;
+        private bool _allowsDogs;
+        private bool _servesAlcohol;
 
-        public Restaurant(string name, int cuisineId, int id = 0)
+        public Restaurant(string name, int cuisineId, bool allowsDogs, bool servesAlcohol, int id = 0)
         {
             _id = id;
             _name = name;
             _cuisineId = cuisineId;
+            _allowsDogs = allowsDogs;
+            _servesAlcohol = servesAlcohol;
             
         }
 
@@ -27,9 +31,20 @@ namespace DiningTracker.Models
         {
             return _name;
         }
+
         public int GetCuisineId()
         {
             return _cuisineId;
+        }
+
+        public bool GetAllowsDogs()
+        {
+            return _allowsDogs;
+        }
+
+        public bool GetServesAlcohol()
+        {
+            return _servesAlcohol;
         }
 
         public void Save()
@@ -38,7 +53,7 @@ namespace DiningTracker.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO restuarants (name, cuisine_id) VALUES (@RestuarantName, @cuisineId);";
+            cmd.CommandText = @"INSERT INTO restuarants (name, cuisine_id, allows_dogs, serves_alcohol) VALUES (@RestuarantName, @cuisineId, @AllowsDogs, @ServesAlcohol);";
 
             MySqlParameter name = new MySqlParameter();
             name.ParameterName = "@RestuarantName";
@@ -49,6 +64,16 @@ namespace DiningTracker.Models
             cuisineId.ParameterName = "@cuisineId";
             cuisineId.Value = _cuisineId;
             cmd.Parameters.Add(cuisineId);
+
+            MySqlParameter allowsDogs = new MySqlParameter();
+            allowsDogs.ParameterName = "@AllowsDogs";
+            allowsDogs.Value = _allowsDogs;
+            cmd.Parameters.Add(allowsDogs);
+
+            MySqlParameter servesAlcohol = new MySqlParameter();
+            servesAlcohol.ParameterName = "@ServesAlcohol";
+            servesAlcohol.Value = _servesAlcohol;
+            cmd.Parameters.Add(servesAlcohol);
 
             cmd.ExecuteNonQuery();
             _id = (int)cmd.LastInsertedId;
@@ -74,7 +99,10 @@ namespace DiningTracker.Models
                 int id = rdr.GetInt32(0);
                 string name = rdr.GetString(1);
                 int cuisineId = rdr.GetInt32(2);
-                Restaurant newRestaurant = new Restaurant(name, cuisineId, id);
+                bool allowsDogs = rdr.GetBoolean(3);
+                bool servesAlcohol = rdr.GetBoolean(3);
+
+                Restaurant newRestaurant = new Restaurant(name, cuisineId, allowsDogs, servesAlcohol, id);
                 allRestaurants.Add(newRestaurant);
             }
             conn.Close();
@@ -113,7 +141,10 @@ namespace DiningTracker.Models
                 int restId = rdr.GetInt32(0);
                 string name = rdr.GetString(1);
                 int cuisineId = rdr.GetInt32(2);
-                Restaurant newRestaurant = new Restaurant(name, cuisineId, restId);
+                bool allowsDogs = rdr.GetBoolean(3);
+                bool servesAlcohol = rdr.GetBoolean(3);
+
+                Restaurant newRestaurant = new Restaurant(name, cuisineId, allowsDogs, servesAlcohol, restId);
                 allOfOneCuisine.Add(newRestaurant);
             }
             conn.Close();
@@ -154,8 +185,10 @@ namespace DiningTracker.Models
                 Restaurant newRestuarant = (Restaurant)otherRestuarant;
                 bool nameEquality = this.GetName().Equals(newRestuarant.GetName());
                 //bool idEquality = this.GetId().Equals(newRestuarant.GetId());
-                bool cuisineIdEquility = this.GetCuisineId().Equals(newRestuarant.GetCuisineId());
-                return (nameEquality && cuisineIdEquility);
+                bool cuisineIdEquality = this.GetCuisineId().Equals(newRestuarant.GetCuisineId());
+                bool dogEquality = this.GetAllowsDogs().Equals(newRestuarant.GetAllowsDogs());
+                bool alcoholEquality = this.GetServesAlcohol().Equals(newRestuarant.GetServesAlcohol());
+                return (nameEquality && cuisineIdEquality && dogEquality && alcoholEquality);
             }
         }
 

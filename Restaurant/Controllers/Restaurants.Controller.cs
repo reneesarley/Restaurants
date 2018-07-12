@@ -18,9 +18,9 @@ namespace DiningTracker.Controllers
     }
 
         [HttpPost("/saveRestaurant")]
-        public ActionResult AllRestaurants(string restaurantName, int cuisineId)
+        public ActionResult AllRestaurants(string restaurantName, int cuisineId, bool allowsDogs, bool servesAlcohol)
         {
-            Restaurant newRestaurant = new Restaurant(restaurantName, cuisineId);
+            Restaurant newRestaurant = new Restaurant(restaurantName, cuisineId, allowsDogs, servesAlcohol);
             newRestaurant.Save();          
             return View(Restaurant.GetAll());
         }
@@ -28,8 +28,7 @@ namespace DiningTracker.Controllers
         [HttpGet("restaurants/{cuisineName}/{id}/sortedByCuisine")]
         public ActionResult JustOneCuisine(string cuisineName, int id)
         {
-            List<Object> model = new List<object>() {Restaurant.GetOneCuisine(id), cuisineName}
-            ;
+            List<Object> model = new List<object>() { Restaurant.GetOneCuisine(id), cuisineName };
 
                
             return View("JustOneCuisine", model);

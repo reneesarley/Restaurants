@@ -3,12 +3,24 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DiningTracker.Controllers;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using DiningTracker.Models;
 
 namespace DiningTracker.Tests
 {
     [TestClass]
-    public class CuisinesControllerTests
+    public class CuisinesControllerTests //: IDisposable
     {
+
+        //public void Dispose()
+        //{
+        //    Cuisine.DeleteAll();
+        //}
+
+        //public CuisinesControllerTest()
+        //{
+        //    DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=diningTracker_test;";
+        //}
+
         [TestMethod]
         public void AddNew_ReturnsCorrectView_True()
         {

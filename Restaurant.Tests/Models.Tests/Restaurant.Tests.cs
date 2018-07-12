@@ -34,7 +34,7 @@ namespace DiningTracker.Tests
         public void Save_SavesToDatabase_ItemList()
         {
             //Arrange
-            Restaurant newRestuarant = new Restaurant("testRestuarant", 0);
+            Restaurant newRestuarant = new Restaurant("testRestuarant", 0, false, false);
 
 
             //Act
